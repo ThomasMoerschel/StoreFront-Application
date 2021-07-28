@@ -1,27 +1,4 @@
-﻿//CLEAN UP
-//clear cart
-//4. Logging 
-//5. Unit Testing (May take a while, follow Stephen's tutorial from Friday) --20 of them-- DB methods tested Data shoudl persist
-//6. Exception Handling 
-//7. Input Validation
-//8. DEPLOY THE WEBSITE (STEPHEN WENT OVER THIS FRIDAY)
-//9. DB structure should be 3NF
-//10. XML Documentation
-
-//MONDAY
-// Manager Portal, Customer Management, StoreFront Management and Making an Order are done
-//Deploy Website 
-//CICD PIPELINE ESTABLISHED USING AZURE PIPELINES
-// if you finish, get started on Unit Testing from stephens video
-//TUESDAY
-// FINISH UNIT TESTING
-// FINISH LOGGING
-// XML DOCUMENTATION
-// DB STRUCTURE 3NF
-// INPUT VALIDATION AND EXCEPTION HANDLING
-
-
-
+﻿
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -77,6 +54,14 @@ namespace SAWebUI.Controllers
             Log.Information("Order Confirmation");
             return View();
         }
+        /// <summary>
+        /// Takes in store ID and CustomerID and loops through static class cart, finds prices from list of products, adds them together
+        /// outputs list of items with the price to view 
+        /// NOTE: order has not been committed to database here
+        /// </summary>
+        /// <param name="p_id"></param>
+        /// <param name="p_customerID"></param>
+        /// <returns>A view with cart items and total price</returns>
         public IActionResult MakeAnOrder(int p_id, int p_customerID)
         {
             Log.Information("MakeAnOrder Reached");
@@ -125,6 +110,14 @@ namespace SAWebUI.Controllers
                 .ToList()
             );
         }
+        /// <summary>
+        /// Takes user input from, essentially, the order confirmation screen. It takes in the custID and storeID to compile an order and commit it to database
+        /// if requested. Also takes in param "cancelOrder" which determines whether to cancel order, clear cart, and add inventory items back OR add a new order
+        /// </summary>
+        /// <param name="p_id"></param>
+        /// <param name="p_customerID"></param>
+        /// <param name="cancelOrder"></param>
+        /// <returns>Either brings user to order confirmation or cancels order and logs the user out</returns>
         [HttpPost]
         public IActionResult MakeAnOrder(int p_id, int p_customerID, string cancelOrder)
         {
@@ -171,6 +164,11 @@ namespace SAWebUI.Controllers
                 return RedirectToAction("MakeAnOrder", "Home", new {p_id = p_id, p_customerID = p_customerID});
             }
         }
+        /// <summary>
+        /// From manager login, validates the data and either admits or rejects manager access
+        /// </summary>
+        /// <param name="managerLogin"></param>
+        /// <returns> Manger menu's if valid, Manager Login if login info is invalid</returns>
         [HttpPost]
         public IActionResult ManagerLogin(CustomerVM managerLogin)
         {
@@ -208,6 +206,11 @@ namespace SAWebUI.Controllers
             }
             return View();
         }
+        /// <summary>
+        /// Customer admits themselves as a new user in the database
+        /// </summary>
+        /// <param name="custVM"></param>
+        /// <returns>Returns to login screen after sign up</returns>
         [HttpPost]
         public IActionResult Add(CustomerVM custVM)
         {
@@ -236,6 +239,11 @@ namespace SAWebUI.Controllers
             }
             return View();
         }
+        /// <summary>
+        /// Validifies customer details and either brings them to storefront menu, or back to login if invalid
+        /// </summary>
+        /// <param name="custVM"></param>
+        /// <returns>Storefront menu or Customer Login</returns>
         [HttpPost]
         public IActionResult Index(CustomerVM custVM)
         {
@@ -273,12 +281,14 @@ namespace SAWebUI.Controllers
             return View();
         }
         /// <summary>
-        /// 
+        /// Takes in cartItem, checks if it exists in cart: (if, adds quantity to existing cart item; else, adds new cart item) and returns user back to storeinventory screen to make another selection
+        /// Takes in customerID to persist data
+        /// "cancelOrder" string determines when to exit this loop
         /// </summary>
         /// <param name="cartItem"></param>
         /// <param name="_customerID"></param>
         /// <param name="cancelOrder"></param>
-        /// <returns></returns>
+        /// <returns>Back to store inventory to make another selection. This loop stops once string "cancelOrder" conditionals are reached</returns>
         [HttpPost]
         public IActionResult StoreInventory(LineItemsVM cartItem, int _customerID, string cancelOrder)
         {

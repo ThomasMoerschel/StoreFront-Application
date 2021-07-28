@@ -71,6 +71,13 @@ namespace SAWebUI.Controllers
             return View(orders);
 
         }
+        /// <summary>
+        /// Takes in p_storeID acting as the locaiton of which to retrieve orders from. It then takes in "sortOrder" which runs through a switch 
+        /// to sort the orders by price
+        /// </summary>
+        /// <param name="p_storeID"></param>
+        /// <param name="sortOrder"></param>
+        /// <returns>A view filtered by orders</returns>
         public IActionResult ViewStoreOrderHistory(int p_storeID, string sortOrder)
         {
             Log.Information("Displaying the Order History of a StoreFront");
@@ -99,6 +106,11 @@ namespace SAWebUI.Controllers
                 }
                 return View(orders);
         }
+        /// <summary>
+        /// Searches for a customer by name 
+        /// </summary>
+        /// <param name="custName"></param>
+        /// <returns>A list of customers containing the string custName</returns>
         [HttpPost]
         public IActionResult Index(string custName)
         {
@@ -122,6 +134,11 @@ namespace SAWebUI.Controllers
             }
             return View(searchCustomer);
         }
+        /// <summary>
+        /// Adds an Inventory to a store location (retrieves quantity to add from "item" param)
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>Returns StoreInventory View with the appropriate storeID</returns>
         [HttpPost]
         public IActionResult StoreInventory(LineItemsVM item)
         {
@@ -137,6 +154,11 @@ namespace SAWebUI.Controllers
             Log.Information("Redirecting to Store Inventory to view change");
             return RedirectToAction("StoreInventory", "Customer", new{p_storeID = storeID});
         }
+        /// <summary>
+        /// Adds customer "custVM" to database
+        /// </summary>
+        /// <param name="custVM"></param>
+        /// <returns>Brings back to customer list</returns>
         [HttpPost]
         public IActionResult Add(CustomerVM custVM)
         {
