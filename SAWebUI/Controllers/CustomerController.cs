@@ -61,11 +61,14 @@ namespace SAWebUI.Controllers
             Log.Information("Displaying Order History of Customer");
             Customer customerOrders = new Customer();
             customerOrders.Id = p_customerID;
-            return View(
-                _ordBL.GetOrders(customerOrders)
+            var orders = _ordBL.GetOrders(customerOrders)
                 .Select(ord => new OrdersVM(ord))
-                .ToList()
-            );
+                .ToList();
+            foreach (var ord in orders)
+            {
+                ord.Price = Math.Round(ord.Price, 2);
+            }
+            return View(orders);
 
         }
         public IActionResult ViewStoreOrderHistory(int p_storeID, string sortOrder)
@@ -75,6 +78,10 @@ namespace SAWebUI.Controllers
             var orders = _ordBL.GetOrders(p_storeID)
                         .Select (ord =>new OrdersVM(ord))
                         .ToList();
+            foreach (var ord in orders)
+            {
+                ord.Price = Math.Round(ord.Price, 2);
+            }
             switch (sortOrder)
                 {
                     case "orders_Desc":

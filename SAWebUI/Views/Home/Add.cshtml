@@ -1,5 +1,5 @@
 @model SAWebUI.Models.CustomerVM
-
+<Html5>
 <div class="text-left">
     <div class="login-form" style = "height 700px; width: 500px; margin: auto;">
     <form asp-action = "Add">
@@ -11,12 +11,12 @@
         </div>
         <div class="form-group">
             <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
-            <input asp-for= "PhoneNumber" type="text" class="form-control" placeholder="(123)456-7890" required="required">
+            <input asp-for= "PhoneNumber" type="string" class="form-control" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required required="required">
             <span asp-validation-for = "PhoneNumber" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Email" class="form-label">Email</label>
-            <input asp-for= "Email" type="text" class="form-control" placeholder="JohnDoe@gmail.com" required="required">
+            <input asp-for= "Email" type="email" class="form-control" placeholder="JohnDoe@gmail.com" required="required">
             <span asp-validation-for = "Email" class="text-danger"></span>
         </div>
         <div class="form-group">
@@ -26,7 +26,7 @@
         </div>
         <div class="form-group">
             <label asp-for= "Password" class="form-label">Password</label>
-            <input asp-for= "Password" type="password" class="form-control" placeholder="Password" required="required">
+            <input asp-for= "Password" type="password" class="form-control" placeholder="Password123" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required="required">
             <input asp-for= "Manager" type = "hidden" value = "0">
             <span asp-validation-for = "Password" class="text-danger"></span>
         </div>
@@ -37,3 +37,4 @@
     </form>
     <a asp-action="Index" class = "btn btn-danger" style ="position:relative; top:10px;">Back</a>
 </div>
+</Html5>

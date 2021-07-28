@@ -19,12 +19,12 @@
                     <td>
                         @using (Html.BeginForm("StoreInventory", "Home", FormMethod.Post))
                         {
-                           <input name = "cartItem.Quantity" size = "4" type = "number" class = "input" value = "1" style = "width:60px"/>
+                           <input name = "cartItem.Quantity" size = "4" type = "number" min = "0" max = "@Model[x].Quantity" class = "input" value = "1" style = "width:60px"/>
                            <input name = "cartItem.Product" type = "hidden" value = "@Model[x].Product">
                            <input name = "cartItem.Id" type = "hidden" value = "@Model[x].Id">
                            <input name = "cartItem.storeId" type = "hidden" value = "@Model[x].storeID">
                            <input name = "_customerID" type = "hidden" value = @ViewBag.custID>
-                           <button type = "submit" class = "btn btn-secondary"> Add to Cart </button>
+                           <button type = "submit" class = "btn btn-primary"> Add to Cart </button>
                         }
                        
                     </td>
@@ -40,6 +40,7 @@
             <input name = "p_customerID" type = "hidden" value = @ViewBag.custID>
             <button type = "submit" class = "btn btn-success">Continue to Checkout</button>
             }
+    <br>
     @using (Html.BeginForm("StoreInventory", "Home", FormMethod.Post))
             {
             <input name = "cancelOrder" type = "hidden" value = "OrderCancelled">

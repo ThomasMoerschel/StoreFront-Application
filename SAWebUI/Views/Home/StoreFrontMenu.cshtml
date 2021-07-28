@@ -25,10 +25,11 @@
                     <td>@Html.DisplayFor(storeFront => store.Id)</td>
                     <td>@Html.DisplayFor(storeFront => store.Name)</td>
                     <td>@Html.DisplayFor(storeFront => store.Address)</td>
-                    <td><a type = "button" class = "btn btn-secondary" @Html.ActionLink("Select", "StoreInventory", new {p_id = store.Id, p_customerID = ViewBag.customerID})/></td>
+                    <td><button class = "btn btn-primary">@Html.ActionLink("Select", "StoreInventory", new {p_id = store.Id, p_customerID = ViewBag.customerID}, new {@style = "color:white"})</button></td>
                 </tr>
             }
         </tbody>
     </table>
 </body>
+<button class = "btn btn-danger">@Html.ActionLink("Back", "Index", new{}, new {@style = "color:white"})</button>
 </html>

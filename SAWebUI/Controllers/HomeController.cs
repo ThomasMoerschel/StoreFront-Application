@@ -96,6 +96,7 @@ namespace SAWebUI.Controllers
                     }
                 }
             }
+            newOrder.Price = Math.Round(newOrder.Price, 2);
             TempData["Price"] = newOrder.Price;
             return View(cart);
         }
@@ -271,6 +272,13 @@ namespace SAWebUI.Controllers
             }
             return View();
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cartItem"></param>
+        /// <param name="_customerID"></param>
+        /// <param name="cancelOrder"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult StoreInventory(LineItemsVM cartItem, int _customerID, string cancelOrder)
         {

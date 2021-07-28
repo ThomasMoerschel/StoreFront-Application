@@ -12,7 +12,7 @@
         <form asp-action = "Add">
             <div class="mb-3">
                 <label asp-for="Name" class="form-label">Name</label>
-                <input asp-for="Name" type="text" class="form-control" placeholder= "John Doe">
+                <input asp-for = "Name" type="text" class="form-control" placeholder="John Doe" required="required">
                 <span asp-validation-for = "Name" class="text-danger"></span>
             </div>
             <div class="mb-3">
@@ -22,21 +22,21 @@
             </div>
             <div class="mb-3">
                 <label asp-for="Email" class="form-label">Email</label>
-                <input asp-for="Email" type="text" class="form-control" placeholder= "JohnDoe@gmail.com">
+                <input asp-for= "Email" type="email" class="form-control" placeholder="JohnDoe@gmail.com" required="required">
                 <span asp-validation-for = "Email" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for= "Address" class="form-label">Address</label>
-                <input asp-for= "Address" type="text" class="form-control" placeholder= "123 Main Street, City, ST 12345">
+                <input asp-for= "Address" type="text" class="form-control" placeholder="123 Main Street, City, ST 12345" required="required">
                 <span asp-validation-for = "Address" class="text-danger"></span>
             </div>
              <div class="mb-3">
                 <label asp-for= "Password" class="form-label">Password</label>
-                <input asp-for= "Password" type="text" class="form-control" placeholder= "Password">
+                <input asp-for= "Password" type="password" class="form-control" placeholder="Password123" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required="required">
                 <span asp-validation-for = "Password" class="text-danger"></span>
             </div>
             
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-success">Submit</button>
         </form>
         <a asp-action="Index" class = "btn btn-danger" style ="position:relative; top:10px;">Back</a>
     </div>

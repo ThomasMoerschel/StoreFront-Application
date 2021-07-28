@@ -25,17 +25,18 @@
     <div>
     <h4>Order Total: $@TempData["Price"]</h4>
     </div>
-     @using (Html.BeginForm("MakeAnOrder", "Home", FormMethod.Post))
-            {
-            <input name = "p_id" type = "hidden" value = @TempData["stoID"]>
-            <input name = "p_customerID" type = "hidden" value = @ViewBag.custID>
-             <input name = "cancelOrder" type = "hidden" value = "OrderCancelled">
-            <button type = "submit" class = "btn btn-danger">Cancel Order</button>
-            }
     @using (Html.BeginForm("MakeAnOrder", "Home", FormMethod.Post))
             {
             <input name = "p_id" type = "hidden" value = @TempData["stoID"]>
             <input name = "p_customerID" type = "hidden" value = @ViewBag.custID>
              <input name = "cancelOrder" type = "hidden" value = "Checkout">
             <button type = "submit" class = "btn btn-success">Checkout</button>
+            }
+            <br>
+    @using (Html.BeginForm("MakeAnOrder", "Home", FormMethod.Post))
+            {
+            <input name = "p_id" type = "hidden" value = @TempData["stoID"]>
+            <input name = "p_customerID" type = "hidden" value = @ViewBag.custID>
+             <input name = "cancelOrder" type = "hidden" value = "OrderCancelled">
+            <button type = "submit" class = "btn btn-danger">Cancel Order</button>
             }
