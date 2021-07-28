@@ -1,0 +1,34 @@
+@model IEnumerable<SAWebUI.Models.StoreFrontVM>
+
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8" />
+        <title></title>
+</head>
+<body>
+    <h1>List of StoreFronts:</h1>
+    <!-- bootstrap styling for button (autoincluded in VCM) -->
+
+    <table class ="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var store in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(storeFront => store.Id)</td>
+                    <td>@Html.DisplayFor(storeFront => store.Name)</td>
+                    <td>@Html.DisplayFor(storeFront => store.Address)</td>
+                    <td><a type = "button" class = "btn btn-secondary" @Html.ActionLink("Select", "StoreInventory", new {p_id = store.Id, p_customerID = ViewBag.customerID})/></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

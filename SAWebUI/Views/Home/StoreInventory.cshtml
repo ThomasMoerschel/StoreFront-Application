@@ -1,0 +1,49 @@
+@model IList<SAWebUI.Models.LineItemsVM>
+<h1>Store Inventory</h1>
+<table class ="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Product</th>
+                <th>Avaliable Quantity</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(int x = 0; x < Model.Count; x++)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(LineItem => Model[x].Id)</td>
+                    <td>@Html.DisplayFor(LineItem => Model[x].Product)</td>
+                    <td>@Html.DisplayFor(LineItem => Model[x].Quantity)</td>
+                    <td>
+                        @using (Html.BeginForm("StoreInventory", "Home", FormMethod.Post))
+                        {
+                           <input name = "cartItem.Quantity" size = "4" type = "number" class = "input" value = "1" style = "width:60px"/>
+                           <input name = "cartItem.Product" type = "hidden" value = "@Model[x].Product">
+                           <input name = "cartItem.Id" type = "hidden" value = "@Model[x].Id">
+                           <input name = "cartItem.storeId" type = "hidden" value = "@Model[x].storeID">
+                           <input name = "_customerID" type = "hidden" value = @ViewBag.custID>
+                           <button type = "submit" class = "btn btn-secondary"> Add to Cart </button>
+                        }
+                       
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <div>
+    @using (Html.BeginForm("MakeAnOrder", "Home", FormMethod.Post))
+            {
+            <input name = "p_id" type = "hidden" value = @TempData["stoID"]>
+            <input name = "p_customerID" type = "hidden" value = @ViewBag.custID>
+            <button type = "submit" class = "btn btn-success">Continue to Checkout</button>
+            }
+    @using (Html.BeginForm("StoreInventory", "Home", FormMethod.Post))
+            {
+            <input name = "cancelOrder" type = "hidden" value = "OrderCancelled">
+            <input name = "_customerID" type = "hidden" value = @ViewBag.custID>
+            <button type = "submit" class = "btn btn-danger">Cancel Order</button>
+            }
+    </div>

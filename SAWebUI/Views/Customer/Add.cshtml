@@ -1,0 +1,46 @@
+@model SAWebUI.Models.CustomerVM
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>Add a Customer</h3>
+
+    <div>
+        <form asp-action = "Add">
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">Name</label>
+                <input asp-for="Name" type="text" class="form-control" placeholder= "John Doe">
+                <span asp-validation-for = "Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+                <input asp-for="PhoneNumber" type="text" class="form-control" placeholder= "(123)456-7890">
+                <span asp-validation-for = "PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" type="text" class="form-control" placeholder= "JohnDoe@gmail.com">
+                <span asp-validation-for = "Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for= "Address" class="form-label">Address</label>
+                <input asp-for= "Address" type="text" class="form-control" placeholder= "123 Main Street, City, ST 12345">
+                <span asp-validation-for = "Address" class="text-danger"></span>
+            </div>
+             <div class="mb-3">
+                <label asp-for= "Password" class="form-label">Password</label>
+                <input asp-for= "Password" type="text" class="form-control" placeholder= "Password">
+                <span asp-validation-for = "Password" class="text-danger"></span>
+            </div>
+            
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <a asp-action="Index" class = "btn btn-danger" style ="position:relative; top:10px;">Back</a>
+    </div>
+</body>
+</html>
+<!-- 3:33 -->
+

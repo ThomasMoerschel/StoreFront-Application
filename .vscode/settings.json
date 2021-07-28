@@ -1,0 +1,4 @@
+{
+    "appService.deploySubpath": "SAWebUI\\Publish",
+    "appService.defaultWebAppToDeploy": ""
+}

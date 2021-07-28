@@ -1,0 +1,41 @@
+@model IList<SAWebUI.Models.LineItemsVM>
+<h1>Order Details:</h1>
+<table class ="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(int x = 0; x < Model.Count; x++)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(LineItem => Model[x].Id)</td>
+                    <td>@Html.DisplayFor(LineItem => Model[x].Product)</td>
+                    <td>@Html.DisplayFor(LineItem => Model[x].Quantity)</td>
+                </tr>
+            }
+            
+
+        </tbody>
+    </table>
+    <div>
+    <h4>Order Total: $@TempData["Price"]</h4>
+    </div>
+     @using (Html.BeginForm("MakeAnOrder", "Home", FormMethod.Post))
+            {
+            <input name = "p_id" type = "hidden" value = @TempData["stoID"]>
+            <input name = "p_customerID" type = "hidden" value = @ViewBag.custID>
+             <input name = "cancelOrder" type = "hidden" value = "OrderCancelled">
+            <button type = "submit" class = "btn btn-danger">Cancel Order</button>
+            }
+    @using (Html.BeginForm("MakeAnOrder", "Home", FormMethod.Post))
+            {
+            <input name = "p_id" type = "hidden" value = @TempData["stoID"]>
+            <input name = "p_customerID" type = "hidden" value = @ViewBag.custID>
+             <input name = "cancelOrder" type = "hidden" value = "Checkout">
+            <button type = "submit" class = "btn btn-success">Checkout</button>
+            }

@@ -1,0 +1,18 @@
+@model SAWebUI.Models.CustomerVM
+
+
+<div class="text-center">
+    <div class="login-form" style = "height 700px; width: 500px; margin: auto;">
+    <form asp-action = "ManagerLogin">
+        <h2 class="text-center">Manager Log in</h2>       
+        <div class="form-group">
+            <input asp-for = "Email" type="text" class="form-control" placeholder="Email" required="required">
+        </div>
+        <div class="form-group">
+            <input asp-for = "Password" type="password" class="form-control" placeholder="Password" required="required">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+        </div>    
+    </form>
+    <p class ="text-right"><a asp-action = "Index">Customer Login</a></p>
