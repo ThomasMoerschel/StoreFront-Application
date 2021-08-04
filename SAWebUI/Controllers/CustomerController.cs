@@ -8,8 +8,6 @@ using StoreAppBL;
 using StoreAppModels;
 using Serilog;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace SAWebUI.Controllers
 {
     public class CustomerController : Controller
@@ -69,7 +67,6 @@ namespace SAWebUI.Controllers
                 ord.Price = Math.Round(ord.Price, 2);
             }
             return View(orders);
-
         }
         /// <summary>
         /// Takes in p_storeID acting as the locaiton of which to retrieve orders from. It then takes in "sortOrder" which runs through a switch 
@@ -130,7 +127,6 @@ namespace SAWebUI.Controllers
                     Log.Information("Customer(s) Found, Displaying Results");
                     searchCustomer.Add(cust);
                 }
-                
             }
             return View(searchCustomer);
         }

@@ -10,11 +10,9 @@ using Xunit;
 
 namespace Test
 {
-    //constructors in unit test will always run before a test case
     public class RepositoryTest
     {
         private readonly DbContextOptions<StoreAppDBContext> _options;
-        //in line memory database to test on
         public RepositoryTest()
         {
             _options = new DbContextOptionsBuilder<StoreAppDBContext>().UseSqlite("Filename = Test.db").Options;
@@ -25,12 +23,9 @@ namespace Test
         {
             using (var context = new StoreAppDBContext(_options))
             {
-                //arrange
                 IRepository repo = new Repository(context);
                 List<Customer> customers;
-                //act
                 customers = repo.GetAllCustomers();
-                //assert
                 Assert.NotNull(customers);
                 Assert.Equal(2, customers.Count);
             }
@@ -46,9 +41,7 @@ namespace Test
                     Name = "Test Name",
                     Password = "Password",
                 };
-
                 Customer found = repo.GetCustomer(tryToFindCust);
-
                 Assert.NotNull(found);
                 Assert.Equal(found.Name, tryToFindCust.Name);
             }
@@ -65,9 +58,7 @@ namespace Test
                     Name = "Test Name",
                     Password = "Password",
                 };
-
                 Customer found = repo.GetCustomer(tryToFindCust);
-
                 Assert.NotNull(found);
                 Assert.Equal(found.Id, tryToFindCust.Id);
             }
@@ -84,9 +75,7 @@ namespace Test
                     Name = "Test Name",
                     Password = "Password",
                 };
-
                 Customer found = repo.GetCustomer(tryToFindCust);
-
                 Assert.NotNull(found);
                 Assert.Equal(found.PhoneNumber, tryToFindCust.PhoneNumber);
             }
@@ -103,9 +92,7 @@ namespace Test
                     Name = "Test Name",
                     Password = "Password",
                 };
-
                 Customer found = repo.GetCustomer(tryToFindCust);
-
                 Assert.NotNull(found);
                 Assert.Equal(found.Email, tryToFindCust.Email);
             }

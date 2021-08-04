@@ -14,9 +14,6 @@ namespace StoreAppDL
         { }
         public StoreAppDBContext(DbContextOptions options) : base(options)
         { }
-        //protected override void OnConfiguring(DbContextOptionsBuilder p_options)
-        //    => p_options.UseSqlServer(@"Server=tcp:moerschel-database.database.windows.net,1433;Initial Catalog=ProjectDatabase;Persist Security Info=False;User ID=ThomasMoerschel;Password=Thomas1203!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-        
         protected override void OnModelCreating(ModelBuilder p_modelBuilder)
         {
             p_modelBuilder.Entity<Customer>()

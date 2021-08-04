@@ -22,7 +22,6 @@ namespace StoreAppDL
             _context.SaveChanges();
             return p_customer;
         }
-
         public LineItems AddInventory(LineItems p_lineItems, int quantity)
         {
             var lineItem = _context.LineItems.Select(item => item).ToList();
@@ -38,7 +37,6 @@ namespace StoreAppDL
              _context.SaveChanges();
              return p_lineItems;                         
         }
-
         public Orders AddOrder(int storeID, int customerID, Orders p_order)
         {
             p_order.StoreId = storeID;
@@ -47,7 +45,6 @@ namespace StoreAppDL
             _context.SaveChanges();
             return p_order;
         }
-
         public Orders GetOrders(int p_customerID, double price)
         {
             List <Orders> orders = _context.Orders.Select(ord=>ord).ToList();
@@ -62,17 +59,14 @@ namespace StoreAppDL
             newOrder.Id = -5;
             return newOrder;
         }
-
         public List<Customer> GetAllCustomers()
         {
             return _context.Customers.Select(cust => cust).ToList();
         }
-
         public List<StoreFront> GetAllStoreFronts()
         {
             return _context.StoreFronts.Select(store => store).ToList();
         }
-
         public Customer GetCustomer(Customer p_customer)
         {
             List<Customer> customers = _context.Customers.Select(cust=> cust).ToList();
@@ -87,7 +81,6 @@ namespace StoreAppDL
             return p_customer;
 
         }
-
         public List<LineItems> GetInventory(int p_id)
         {
             List<LineItems> totalInventory = _context.LineItems.Select(
@@ -99,7 +92,6 @@ namespace StoreAppDL
             }
             return storeInventory;
         }
-
         public List<Orders> GetOrders(int p_storeFront)
         {
             List<Orders> allOrders = _context.Orders.Select(
@@ -111,7 +103,6 @@ namespace StoreAppDL
             }
             return storeOrders;
         }
-
         public List<Orders> GetOrders(Customer p_customer)
         {
             List<Orders> allOrders = _context.Orders.Select(
@@ -123,7 +114,6 @@ namespace StoreAppDL
             }
             return customerOrders;
         }
-
         public List<Products> GetProducts(int storeId)
         {
             List<Products> totalProducts = _context.Products.Select(

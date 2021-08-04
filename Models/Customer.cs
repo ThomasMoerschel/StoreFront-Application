@@ -14,10 +14,6 @@ namespace StoreAppModels
         public string Password {get; set; }
         public int Manager { get; set; }
         public List <Orders> Orders { get; set; }
-
-        
-        //overrides default string function allowing you to output object parameters:: otherwise you receive "namespace.class"
-
         public override string ToString()
         {
             return $"Customer ID: {Id}\nName: {Name}\nPhone Number: {PhoneNumber}\nAddress: {Address}\nEmail: {Email}";

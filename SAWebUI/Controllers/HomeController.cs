@@ -22,7 +22,6 @@ namespace SAWebUI.Controllers
         private IOrderBL _ordBL;
         public static List <LineItemsVM> cart = new List<LineItemsVM>();
         private readonly ILogger<HomeController> _logger;
-
         public HomeController(ILogger<HomeController> logger, ICustomerBL p_custBL, IStoreFrontBL p_storeBL, IInventoryBL p_invBL, IProductsBL p_proBL, IOrderBL p_ordBL)
         {
             _logger = logger;
@@ -32,10 +31,8 @@ namespace SAWebUI.Controllers
             _proBL = p_proBL;
             _ordBL = p_ordBL;
         }
-
         public IActionResult Index()
         {
-            
             Log.Information("Customer Login");
             return View();
         }
@@ -351,7 +348,6 @@ namespace SAWebUI.Controllers
             return RedirectToAction("StoreInventory", "Home", new {p_id = cartItem.storeID, p_customerID = _customerID});
             }
         }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
