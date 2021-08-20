@@ -27,5 +27,12 @@ This application is designed with functionality that would make virtual shopping
   <li> Provide product details to the customer when browsing a store's inventory. </li>
   <li> Add more complex design elements to the User Interface </li>
   </ul>
-
+<h3>Getting Started:</h3>
+<ol>
+  <li> Clone this repository: <b>git clone https://github.com/210628-UTA-NET/Thomas-Moerschel-P1.git</b> </li>
+  <li> Navigate to the <b>SAWebUI</b> folder. </li>
+  <li> Restore project dependencies: <b>dotnet restore</b> </li>
+  <li> Run the application: <b>dotnet run</b> </li>
+  <li> Navigate to the port specified in the terminal. </li>
+</ol>
 
