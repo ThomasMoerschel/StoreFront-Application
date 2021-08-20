@@ -1,5 +1,7 @@
 # Thomas-Moerschel-P1
 <h1>StoreApp 2.0</h1>
+<h2>Project Description </h2>
+This application is designed with functionality that would make virtual shopping much simpler! Customers can sign up for an account, place orders, view their order history, and specific location inventory. It also comes with an additional interface for managing your business. Managers can view and replenish location inventory, add new products, and view the order history of specific locations.
 <h2>Technologies Used:</h2>
   <ul>
     <li>C#</li>
