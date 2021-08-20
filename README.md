@@ -39,5 +39,4 @@ This application is designed with functionality that would make virtual shopping
 <ul>
   <li>Thomas Moerschel
 </ul>
-Thomas Moerschel
 
