@@ -35,6 +35,9 @@ This application is designed with functionality that would make virtual shopping
   <li> Run the application: <b>dotnet run</b> </li>
   <li> Navigate to the port specified in the terminal. </li>
 </ol>
-<h3>Contributors:</h3><br>
+<h3>Contributors:</h3>
+<ul>
+  <li>Thomas Moerschel
+</ul>
 Thomas Moerschel
 
