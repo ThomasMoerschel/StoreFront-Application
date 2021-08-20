@@ -1,6 +1,6 @@
 # Thomas-Moerschel-P0
 <h1>StoreApp 2.0</h1>
-<h3>Technologies Used<h3>
+<h2>Technologies Used<h2>
   <ul>
     <li>C#</li>
     <li>MS SQL Server</li>
