@@ -29,7 +29,7 @@ This application is designed with functionality that would make virtual shopping
   </ul>
 <h3>Getting Started:</h3>
 <ol>
-  <li> Clone this repository: <b>git clone https://github.com/210628-UTA-NET/Thomas-Moerschel-P1.git</b> </li>
+  <li> Clone this repository </li>
   <li> Navigate to the <b>SAWebUI</b> folder. </li>
   <li> Restore project dependencies: <b>dotnet restore</b> </li>
   <li> Run the application: <b>dotnet run</b> </li>
